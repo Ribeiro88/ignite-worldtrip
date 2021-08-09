@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, Icon, Image, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverTrigger, Text } from '@chakra-ui/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { Fragment } from 'react';
 import { RiInformationLine } from 'react-icons/ri';
 
 import { Header } from  '../../components/Header';
@@ -50,22 +51,22 @@ export default function Continent({ continent }: ContinentProps) {
             </Flex>
 
 
-            <Flex direction="row" maxW={1160} mt="20" gridGap="10" justify="space-between" align="center" mx="auto">
-                <Text color="text" fontSize="2xl" lineHeight="36px" fontWeight="400" textAlign="justify">
+            <Flex direction={["column","row"]} maxW={["343","1160"]} mt={["8", "20"]} gridGap={["6","10"]} justify="space-between" align="center" mx="auto">
+                <Text color="text" fontSize={["sm","2xl"]} lineHeight="36px" fontWeight="400" textAlign="justify">
                     {continent.text}
                 </Text>
-                <Flex direction="row" gridGap="5" textAlign="center">
-                    <Box w="40">
-                        <Heading color="highlight" fontWeight="600" fontSize="5xl">{continent.totalCountries}</Heading>
-                        <Text color="text" fontWeight="600" fontSize="xl">países</Text>
+                <Flex direction="row" gridGap={["0","5"]} textAlign={["left","center"]}>
+                    <Box w={["28","40"]}>
+                        <Heading color="highlight" fontWeight="600" fontSize={["3xl","5xl"]}>{continent.totalCountries}</Heading>
+                        <Text color="text" fontWeight="600" fontSize={["sm","xl"]}>países</Text>
                     </Box>
-                    <Box w="40">
-                        <Heading color="highlight" fontWeight="600" fontSize="5xl">{continent.languages}</Heading>
-                        <Text color="text" fontWeight="600" fontSize="xl">línguas</Text>
+                    <Box w={["28","40"]}>
+                        <Heading color="highlight" fontWeight="600" fontSize={["3xl","5xl"]}>{continent.languages}</Heading>
+                        <Text color="text" fontWeight="600" fontSize={["sm","xl"]}>línguas</Text>
                     </Box>
-                    <Box w="40">
-                        <Heading color="highlight" fontWeight="600" fontSize="5xl">{continent.cities}</Heading>
-                        <Text color="text" fontWeight="600" fontSize="xl">
+                    <Box w={["28","40"]}>
+                        <Heading color="highlight" fontWeight="600" fontSize={["3xl","5xl"]}>{continent.cities}</Heading>
+                        <Text color="text" fontWeight="600" fontSize={["sm","xl"]}>
                             cidades +100
                             <Popover>
                                 <PopoverTrigger>
@@ -78,7 +79,9 @@ export default function Continent({ continent }: ContinentProps) {
                                     <PopoverCloseButton />
                                     <PopoverBody fontWeight="400" fontSize="lg" color="text">
                                         {continent.countries.map(countries => (
-                                            <span key={countries.id}>{countries.name} </span>
+                                            <Fragment key={countries.name}>
+                                                <span>{countries.name}<br /> </span>
+                                            </Fragment>
                                         ))}
                                     </PopoverBody>
                                 </PopoverContent>
@@ -87,12 +90,12 @@ export default function Continent({ continent }: ContinentProps) {
                     </Box>
                 </Flex>
             </Flex>
-            <Box maxW={1160} mx="auto" my="20">
-                <Heading color="text" fontWeight="500" fontSize="4xl" mb="10">Cidades +100</Heading>
+            <Box maxW={["343","1160"]} mx="auto" my={["8", "20"]}>
+                <Heading color="text" fontWeight="500" fontSize={["2xl","4xl"]} mb="10">Cidades +100</Heading>
             </Box>
-            <Flex maxW={1160} direction="row" flexWrap="wrap" mb="20" mx="auto" gridGap="10">
+            <Flex maxW={["343","1160"]} direction="row" flexWrap="wrap" mb="20" mx="auto" gridGap="10">
                 {continent.countries && continent.countries.map(country => (
-                    <Box w="64">
+                    <Box w={["100%","64"]} key={country.name}>
                         <Image src={country.image} alt={country.name} w="100%" h="40" objectFit="cover" />
                         <Flex align="center" justify="space-between" bg="white" border="1px" px="6" py="5" borderColor="highlight" borderTop="0">
                             <Box>

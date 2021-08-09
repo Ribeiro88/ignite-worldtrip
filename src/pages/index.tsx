@@ -8,7 +8,7 @@ import { TravelTypes } from "../components/TravelTypes";
 import api from "../services/api";
 
 interface ContinentsData {
-  id: number;
+  id: string;
   name: string;
   description: string;
   slideImage: string;

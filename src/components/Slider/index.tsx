@@ -9,7 +9,7 @@ SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 
 interface SlidesProps {
-    id: number;
+    id: string;
     name: string;
     description: string;
     slideImage: string;
@@ -37,7 +37,7 @@ export default function Slider({ slides }: SlideProps){
                             bgSize="cover"
                             textAlign="center"                
                         >
-                            <Link href={`/continents/${slide.id}`} passHref>
+                            <Link href={`/continent/${slide.id}`} passHref>
                                 <a>
                                     <Heading color="white" fontSize={["4xl","5xl"]} fontWeight="700" lineHeight="72px">{slide.name}</Heading>
                                     <Text color="white" fontSize={["xl","2xl"]} fontWeight="700" lineHeight="36px">{slide.description}</Text>
