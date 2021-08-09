@@ -11,7 +11,7 @@ export function Header({ back }: BackProps){
 
     return (
         
-        <Flex as="header" w="100%" h="100" px={["4","140"]} align="center" justify={back ? "space-between" : "center"} bg="header">
+        <Flex as="header" w="100%" h="100" px={["4","36"]} align="center" justify={back ? "space-between" : "center"} bg="header">
             {back && (
                 <Link href="/">
                     <a>

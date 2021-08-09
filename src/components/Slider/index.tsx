@@ -9,38 +9,38 @@ SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 
 interface SlidesProps {
-    slides: {
-        link: string;
-        name: string;
-        info: string;
-        image: string;
-    }[]
-   
+    id: number;
+    name: string;
+    description: string;
+    slideImage: string;
 }
 
-export default function Slider({slides}: SlidesProps){
+interface SlideProps {
+    slides: SlidesProps[];
+}
+
+export default function Slider({ slides }: SlideProps){
     return (
         <Flex w="100%" h={["250px","450px"]} maxW={1240} mx="auto" mb="10">
             <Swiper slidesPerView={1} navigation pagination={{ clickable: true }} autoplay={{delay:3000}} style={{width: '100%', flex: '1'}}>
                 {slides.map(slide => (
-                    <SwiperSlide key={slide.name}>
+                    <SwiperSlide key={slide.id}>
                         <Flex
                             w="100%"
                             h={["250px","450px"]}
                             align="center"
                             justify="center"
                             direction="column"
-                            bgImage={`url('/slides/${slide.image}.jpg')`}
+                            bgImage={`url('${slide.slideImage}')`}
                             bgPosition="100%"
                             bgRepeat="no-repeat"
                             bgSize="cover"
-                            textAlign="center"
-                            
+                            textAlign="center"                
                         >
-                            <Link href={`/${slide.link}`}>
+                            <Link href={`/continents/${slide.id}`} passHref>
                                 <a>
                                     <Heading color="white" fontSize={["4xl","5xl"]} fontWeight="700" lineHeight="72px">{slide.name}</Heading>
-                                    <Text color="white" fontSize={["xl","2xl"]} fontWeight="700" lineHeight="36px">{slide.info}</Text>
+                                    <Text color="white" fontSize={["xl","2xl"]} fontWeight="700" lineHeight="36px">{slide.description}</Text>
                                 </a>
                             </Link>
                         </Flex>
